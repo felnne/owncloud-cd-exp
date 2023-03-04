@@ -1,0 +1,43 @@
+name: Continuous Deployment
+
+env:
+  SRC_PATH: placeholder_script.py
+  TARGET_PATH: /exp-2023-01/why/is/this/path/quite/so/long/it/looks/silly
+  PYTHON_VERSION: '3.8'
+
+on:
+  push:
+    branches:
+      - main
+
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Set up Python version
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Create and start virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+      
+      - name: Set up dependency caching for faster installs
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: deps
+          restore-keys: deps
+
+      - name: Install dependencies
+        run: pip install webdavclient3
+
+      - name: Run deploy script
+        run: |
+          python ${{ github.workspace }}/gha-client/webdav-deploy.py

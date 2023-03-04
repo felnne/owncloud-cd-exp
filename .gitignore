@@ -1,0 +1,7 @@
+# Python
+/python-client/.python-version
+/python-client/.venv/
+__pycache__
+
+# Tools
+/.vscode/

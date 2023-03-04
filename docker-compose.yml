@@ -1,0 +1,13 @@
+---
+
+services:
+  app:
+    image: owncloud/server
+    ports:
+      - 8080:8080
+    environment:
+      - OWNCLOUD_ADMIN_USERNAME=admin
+      - OWNCLOUD_ADMIN_PASSWORD=password
+      - OWNCLOUD_TRUSTED_DOMAINS=ma-owncloud-exp.example.com
+    volumes:
+      - ./server/data:/mnt/data

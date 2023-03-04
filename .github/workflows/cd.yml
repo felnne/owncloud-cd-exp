@@ -37,10 +37,15 @@ jobs:
       - name: Install dependencies
         run: pip install webdavclient3
 
+      - name: check deployment endpoint
+        uses: jtalk/url-health-check-action@v3
+        with:
+          url: ${{ vars.OC_HOSTNAME }}
+
       - name: Run deploy script
         run: |
           python ${{ github.workspace }}/gha-client/webdav-deploy.py
         env: # Or as an environment variable
           OC_USERNAME: ${{ secrets.OC_USERNAME }}
           OC_PASSWORD: ${{ secrets.OC_PASSWORD }}
-          OC_HOSTNAME : ${{ vars.OC_HOSTNAME }}"
+          OC_HOSTNAME : ${{ vars.OC_HOSTNAME }}

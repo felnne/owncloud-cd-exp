@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ma-owncloud-exp"
+version = "0.1.0"
+description = "An experiment to use GitHub Actions to deploy a Python script to an ownCloud instance via webDAV."
+authors = ["Felix Fennell <ffennell@mapaction.org>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+webdavclient3 = "^3.14.6"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+python-dotenv = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

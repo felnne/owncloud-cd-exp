@@ -5,3 +5,6 @@ __pycache__
 
 # Tools
 /.vscode/
+
+# Services
+/server/

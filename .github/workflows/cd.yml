@@ -43,3 +43,4 @@ jobs:
         env: # Or as an environment variable
           OC_USERNAME: ${{ secrets.OC_USERNAME }}
           OC_PASSWORD: ${{ secrets.OC_PASSWORD }}
+          OC_HOSTNAME : ${{ vars.OC_HOSTNAME }}"
